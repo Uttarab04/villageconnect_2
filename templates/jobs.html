@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}View Jobs - VillageConnect{% endblock %}
+
+{% block content %}
+    <h2>💼 Job Listings</h2>
+
+    {% if jobs %}
+        {% for job in jobs %}
+            <div style="background: white; padding: 1em; margin-bottom: 1.2em; border-radius: 8px; box-shadow: 0 0 5px #ccc;">
+                <h3 style="color: #264653;">{{ job['title'] }}</h3>
+                <p>{{ job['description'] }}</p>
+                <p><strong>Salary:</strong> {{ job['salary'] or 'Not specified' }}</p>
+                <p><strong>Location:</strong> {{ job['location'] or 'Not specified' }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No jobs posted yet.</p>
+    {% endif %}
+{% endblock %}

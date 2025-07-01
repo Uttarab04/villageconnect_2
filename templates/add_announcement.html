@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Add Announcement - VillageConnect{% endblock %}
+
+{% block content %}
+    <h2>📢 Post a New Announcement</h2>
+
+    <form action="/add-announcement" method="POST" style="background: white; padding: 2em; border-radius: 10px; max-width: 500px; box-shadow: 0 0 8px #ccc;">
+        <label for="title"><strong>Title</strong></label>
+        <input type="text" name="title" id="title" required style="width: 100%; padding: 0.6em; margin-bottom: 1em;">
+
+        <label for="message"><strong>Message</strong></label>
+        <textarea name="message" id="message" required style="width: 100%; padding: 0.6em; height: 100px; margin-bottom: 1em;"></textarea>
+
+        <label for="date_posted"><strong>Date (YYYY-MM-DD)</strong></label>
+        <input type="text" name="date_posted" id="date_posted" required style="width: 100%; padding: 0.6em; margin-bottom: 1em;">
+
+        <button type="submit" style="background-color: #2a9d8f; color: white; padding: 0.7em 1.5em; border: none; border-radius: 5px;">
+            Submit Announcement
+        </button>
+    </form>
+{% endblock %}

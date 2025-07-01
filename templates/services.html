@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Services - VillageConnect{% endblock %}
+
+{% block content %}
+    <h2>🔍 Search Village Services</h2>
+
+    <form method="GET" action="/services" style="margin-bottom: 1.5em;">
+        <input type="text" name="q" value="{{ query }}" placeholder="Search announcements or jobs..." style="padding: 0.5em; width: 60%;">
+        <button type="submit" style="padding: 0.5em;">Search</button>
+    </form>
+
+    {% if announcements %}
+        <h3>📢 Announcements</h3>
+        {% for a in announcements %}
+            <div style="background:#f9f9f9; padding:1em; margin-bottom:1em; border-radius:6px;">
+                <strong>{{ a['title'] }}</strong><br>
+                <small>{{ a['date_posted'] }}</small><br>
+                <p>{{ a['message'] }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if jobs %}
+        <h3>💼 Jobs</h3>
+        {% for job in jobs %}
+            <div style="background:#f1f1f1; padding:1em; margin-bottom:1em; border-radius:6px;">
+                <strong>{{ job['title'] }}</strong><br>
+                <p>{{ job['description'] }}</p>
+                <p><strong>Salary:</strong> {{ job['salary'] or "N/A" }} | <strong>Location:</strong> {{ job['location'] or "N/A" }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if not announcements and not jobs %}
+        <p>No services found for "{{ query }}".</p>
+    {% endif %}
+{% endblock %}

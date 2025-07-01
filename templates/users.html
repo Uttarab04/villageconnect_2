@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Users - VillageConnect{% endblock %}
+
+{% block content %}
+    <h2>👥 Community Users</h2>
+
+    {% if users %}
+        <table style="width: 100%; border-collapse: collapse; background: white; box-shadow: 0 0 8px #ccc;">
+            <thead style="background-color: #2a9d8f; color: white;">
+                <tr>
+                    <th style="padding: 1em; text-align: left;">ID</th>
+                    <th style="padding: 1em; text-align: left;">Name</th>
+                    <th style="padding: 1em; text-align: left;">Email</th>
+                    <th style="padding: 1em; text-align: left;">Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 0.8em;">{{ user['id'] }}</td>
+                        <td style="padding: 0.8em;">{{ user['name'] }}</td>
+                        <td style="padding: 0.8em;">{{ user['email'] }}</td>
+                        <td style="padding: 0.8em;">{{ user['role'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No users available.</p>
+    {% endif %}
+{% endblock %}

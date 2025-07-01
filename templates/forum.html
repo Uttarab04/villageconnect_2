@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Village Forum{% endblock %}
+
+{% block content %}
+    <h2>🗣️ Village Forum</h2>
+
+    <form method="POST" style="margin-bottom: 2em; background: #f9f9f9; padding: 1.5em; border-radius: 8px;">
+        <label for="name"><strong>Your Name:</strong></label><br>
+        <input type="text" name="name" required style="width: 100%; padding: 0.6em;"><br><br>
+
+        <label for="message"><strong>Message:</strong></label><br>
+        <textarea name="message" required style="width: 100%; padding: 0.6em;" rows="4"></textarea><br><br>
+
+        <button type="submit" style="background-color: #2a9d8f; color: white; padding: 0.7em 1.5em; border: none; border-radius: 5px;">
+            Post
+        </button>
+    </form>
+
+    {% for post in posts %}
+        <div style="margin-bottom: 1em; padding: 1em; background-color: #f1f1f1; border-radius: 6px;">
+            <strong>{{ post['name'] }}</strong>
+            <small style="float: right;">{{ post['timestamp'] }}</small>
+            <p>{{ post['message'] }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

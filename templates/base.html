@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}VillageConnect{% endblock %}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: #fefae0;
+            color: #333;
+        }
+        header {
+            background-color: #264653;
+            color: white;
+            padding: 1rem 2rem;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            background-color: #2a9d8f;
+            padding: 0.75rem 2rem;
+        }
+        nav a {
+            color: white;
+            margin-right: 1.5rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 2rem;
+        }
+        footer {
+            background-color: #264653;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>VillageConnect 🌾</h1>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                {% if session.get("user_id") %}
+                    <span>👋 Hello, {{ session.get("name") }}</span>
+                {% endif %}
+            </div>
+    
+            <div>
+                <a href="/">Home</a>
+    
+                {% if session.get("user_id") %}
+                    {% if session.get("role") == "admin" %}
+                        <a href="/add-job">Add Job</a>
+                        <a href="/add-announcement">Add Announcement</a>
+                        <a href="/view-users">View Users</a>
+                    {% endif %}
+    
+                    <a href="/services">Services</a>
+                    <a href="/forum">Forum</a>
+                    <a href="/logout">Logout</a>
+    
+                {% else %}
+                    <a href="/signup">Sign Up</a>
+                    <a href="/login">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>    
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        &copy; 2025 VillageConnect | Empowering Rural Communities
+    </footer>
+</body>
+</html>

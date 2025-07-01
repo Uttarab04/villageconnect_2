@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Announcements - VillageConnect{% endblock %}
+
+{% block content %}
+    <h2>📢 Latest Announcements</h2>
+
+    {% if announcements %}
+        {% for a in announcements %}
+            <div style="background: white; padding: 1em; margin-bottom: 1.2em; border-radius: 8px; box-shadow: 0 0 5px #ccc;">
+                <h3 style="color: #264653;">{{ a['title'] }}</h3>
+                <p>{{ a['message'] }}</p>
+                <p style="font-size: 0.9em; color: #888;">📅 Posted on: {{ a['date_posted'] }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No announcements to show right now.</p>
+    {% endif %}
+{% endblock %}
