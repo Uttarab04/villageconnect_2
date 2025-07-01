@@ -109,6 +109,14 @@ You can also sign up as a regular user from the /signup page.
 
 ---
 
+## 🔗 Live Demo
+
+Check out the live app hosted on Render:
+
+👉 [https://villageconnect-2-ypq4.onrender.com](https://villageconnect-2-ypq4.onrender.com)
+
+---
+
 ## 📬 Contact
 Developed by Uttara Balpande
 Connect on LinkedIn: *https://www.linkedin.com/in/uttara-balpande-a6924a2a0/*
